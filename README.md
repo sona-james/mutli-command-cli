@@ -37,13 +37,13 @@ The following steps are done from the command line to clone the repository:
 1.  Clone the repository using GH CLI:
 
     ``` bash
-    gh repo clone cmsc-vcu/cmsc427-sp2025-hw13-SonaJames12
+    gh repo clone sona-james/mutli-command-cli
     ```
 
 2.  Navigate into the cloned repository:
 
     ``` bash
-    cd cmsc-vcu/cmsc427-sp2025-hw13-SonaJames12
+    cd sona-james/mutli-command-cli
     ```
 
 **Testing**
