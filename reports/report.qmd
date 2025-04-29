@@ -1,0 +1,242 @@
+---
+title: Multi Command Line Interfaces
+title-block-banner: '#1C542D'
+title-block-banner-color: "White"
+author:
+   - name: Sona James
+     email: jesbysona@gmail.com
+format:
+    html:
+        embed-resources: true
+        html-math-method: katex
+        theme: materia
+        fontsize: 15px
+        toc: true
+---
+
+This project is based on multi-command CLI that serves up three calculator based subcommands.
+
+
+# Command `multi quickmath` - a simple basic arithmetic calculator
+
+This program offers a simple basic calculator using `+,` `-,` `*,`or *`/`* operators. It also demonstrates key features of the python *click* library.
+
+## Key features
+
+-   Prompts for two numbers and an operator
+-   Handles the basic arithmetic operations - addition, subtraction, multiplication, and division
+-   The parameters can be added using the `--n1` option for the first number, `--n2` option for the second number, and the `--op` option for the operator
+-   Includes basic error handling - division by zero
+-   default help is available with --help
+
+## Command documentation
+
+-   **Usage Section**
+
+    This section provides the basic usages for **quickmath**. This is a basic calculator that allows the users to perform the basic arithmetic operations directly from the terminal. The users are prompted to enter two numbers and an arithmetic operator when they run this command.
+
+    *These are the steps the user have to follow:*
+
+    1.  Run the program
+    2.  The program prompts the user to enter the first number
+    3.  The program prompts the user to enter the second number
+    4.  The program prompts the user to enter the operator. The accepted operators are listed below:
+        -   `+` for addition
+        -   `-` for subtraction
+        -   `*` for multiplication
+        -   `/` for division
+
+    After all valid input is entered, the program displays the result.
+
+    There are two types of invalid input this program checks for. They are as follows:
+
+    1.  If the second number is 0 and the operator is /. The program displays division by zero.
+    2.  If the operator is not one of the valid operators. The program displays not a valid operator. Operator must be +, -, \*, or /
+
+-   **Design Section**
+
+    This program utilizes the click library for input validation. The program uses @click.option to each input parameter: the first number, second number, and lastly the operator.
+
+    *Some of the design features are:*
+
+    -   The first number and second number are converted to floats to support a wider range of calculations.
+    -   The white spaces that might be included in the input are removed using .strip()
+    -   The program uses @click.prompt to prompt the user for input values
+    -   The program uses @click.echo to display the result of the operation
+
+### Example command: Default usage
+
+``` default
+mytools quickmath
+First number: 10
+Second number: 2
+Operator: /
+Result: 5.0
+```
+
+### Example command: more complicated example
+
+``` default
+mytools quickmath --n1 2 --n2 10 --op /
+Result: 0.2
+```
+
+## Sample screens
+
+![default](./assets/p1.1.png)
+
+![example command](./assets/p1.2.png)
+
+# Command `multi grader` - a final grade calculator
+
+This program offers a final grade calculator. It also demonstrates key features of the python *click* library.
+
+## Key features
+
+-   Prompts the user for the number of categories (homeworks, tests, etc.), grades, and weights
+-   Supports weighted average calculation
+-   Handles multiple assignments per category
+-   Calculates and displays the final grade
+-   The number of categories can be changes with the `--n` option
+-   default help is available with --help
+
+## Command documentation
+
+-   **Usage Section**
+
+    This section provides the basic usages for **grader**. This program is a simple final grade calculator that allows users to compute a final grade based on each weighted category. The program first prompts the user for the number of categories, then the number of assignments and grades for each category, and the then the weight for each category.
+
+    *These are the steps the user have to follow:*
+
+    1.  Run the program
+    2.  The program prompts the user to enter the number of categories
+    3.  The program prompts the user to enter the number of assignments within the first category
+    4.  The program prompts the user to enter the grade for the first assignment
+    5.  The program prompts the user to enter the weight of the first category
+
+    Steps 3 to 5 repeat for each category
+
+    After all valid input is entered, the program displays the result.
+
+-   **Design Section**
+
+    This program utilizes the click library for input validation. The program uses @click.option to each input parameter.
+
+    *Some of the design features are:*
+
+    -   The number of assignments is converted to int, each grade and weight entered are of float type
+    -   The program add new line for readability
+    -   The program uses @click.prompt to prompt the user for input values
+    -   The program uses @click.echo to display the result of the operation
+
+### Example command: Default usage
+
+``` default
+mytools grader
+Number of Categories: 2
+
+Enter the number of assignments in category 1: 2
+Enter grade #1 for category 1: 10
+Enter grade #2 for category 1: 100
+
+Enter weight for category 1(round decimal to 2 places): 0.2
+
+Enter the number of assignments in category 2: 4
+Enter grade #1 for category 2: 100
+Enter grade #2 for category 2: 70
+Enter grade #3 for category 2: 40
+Enter grade #4 for category 2: 60
+
+Enter weight for category 2(round decimal to 2 places): 0.8
+
+Final Grade: 65.0
+```
+
+### Example command: more complicated example
+
+``` default
+mytools grader --n 2
+
+Enter the number of assignments in category 1: 2
+Enter grade #1 for category 1: 50
+Enter grade #2 for category 1: 60
+
+Enter weight for category 1(round decimal to 2 places): 0.5
+
+Enter the number of assignments in category 2: 4
+Enter grade #1 for category 2: 80
+Enter grade #2 for category 2: 100
+Enter grade #3 for category 2: 100
+Enter grade #4 for category 2: 90
+
+Enter weight for category 2(round decimal to 2 places): 0.5
+
+Final Grade: 73.75
+```
+
+## Sample screens
+
+![default](./assets/p2.1.png)
+
+![example command](./assets/p2.2.png)
+
+# Command `multi lifeline` - an age calculator that provides the current age
+
+This program offers a age calculator that calculates your age based on your date of birth and the current date, month, and year today. It also demonstrates key features of the python *click* library and the *datetime* library.
+
+## Key features
+
+-   Prompts the user for birth month, day, and year
+-   Calculates current age based on today's date
+-   Validates input ranges for month, day, and year
+-   The parameters can be changes using `--m` for month, `--d` for the date, and `--y` for the year
+-   default help is available with --help
+
+## Command documentation
+
+-   **Usage Section**
+
+    This section provides the basic usages for **lifeline**. This program is a simple age calculator that allows a user to determine their or someone else's current age based on their birth date.
+
+    *These are the steps the user have to follow to get the current age:*
+
+    1.  Run the program
+    2.  The program prompts the user to enter the birth month
+    3.  The program prompts the user to enter the birth date
+    4.  The program prompts the user to enter the birth year
+
+    After all valid input is entered, the program displays the result. The program checks for invalid inputs, such as out of range dates or future years.
+
+-   **Design Section**
+
+    This program utilizes the click library for input validation. The program uses @click.option to each input parameter: month, date, and year.
+
+    *Some of the design features are:*
+
+    -   The month, date, and year converts the input to int type
+    -   The program checks for future dates and invalid inputs for month and date.
+    -   The program uses @click.prompt to prompt the user for input values
+    -   The program uses @click.echo to display the result of the operation
+
+### Example command: Default usage
+
+``` default
+mytools lifeline
+Enter your birth month (1-12): 2
+Enter your birth day (1-31): 5
+Enter your birth year (year number): 1966
+You are 59 years old today
+```
+
+### Example command: more complicated example
+
+``` default
+mytools lifeline --m 10 --d 29 --y 2023
+You are 1 years old today
+```
+
+## Sample screens
+
+![default](./assets/p3.1.png)
+
+![example command](./assets/p3.2.png)

@@ -1,0 +1,12 @@
+
+author:
+  - name: Sona James
+    email: jesbysona@gmail.com
+
+date: last-modified
+
+
+format:
+  html:
+    embed-resources: true
+    theme: materia
